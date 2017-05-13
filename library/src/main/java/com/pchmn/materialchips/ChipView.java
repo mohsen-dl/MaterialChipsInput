@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.annotation.ColorInt;
@@ -76,6 +77,8 @@ public class ChipView extends RelativeLayout {
         ButterKnife.bind(this, rootView);
         // letter tile provider
         mLetterTileProvider = new LetterTileProvider(mContext);
+
+        mLabelTextView.setTypeface(GetTypeFace("IRANSansWeb(FaNum)_Medium.ttf"));
 
         // attributes
         if(attrs != null) {
@@ -446,5 +449,10 @@ public class ChipView extends RelativeLayout {
         chipView.inflateWithAttributes();
 
         return chipView;
+    }
+
+    private Typeface GetTypeFace(String fontName){
+        Typeface face = Typeface.createFromAsset(mContext.getAssets(), "fonts/" + fontName);
+        return face;
     }
 }
